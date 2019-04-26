@@ -154,6 +154,14 @@ public class ViewBinderHelper {
         setLockSwipe(true, id);
     }
 
+    public void lockAllSwipe() {
+        setLockSwipe(true, mapLayouts.keySet().toArray(new String[0]));
+    }
+
+    public void unlockAllSwipe() {
+        setLockSwipe(false, mapLayouts.keySet().toArray(new String[0]));
+    }
+
     /**
      * Unlock swipe for some layouts.
      * @param id a string that uniquely defines the data object.

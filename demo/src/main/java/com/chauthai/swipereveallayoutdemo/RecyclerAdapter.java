@@ -23,14 +23,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter {
     private List<String> mDataSet = new ArrayList<>();
     private LayoutInflater mInflater;
     private Context mContext;
-    private final ViewBinderHelper binderHelper = new ViewBinderHelper();
+    private final ViewBinderHelper binderHelper;
 
 
-    public RecyclerAdapter(Context context, List<String> dataSet) {
+    public RecyclerAdapter(Context context, List<String> dataSet, ViewBinderHelper binderHelper ) {
         mContext = context;
         mDataSet = dataSet;
         mInflater = LayoutInflater.from(context);
-
+        this.binderHelper = binderHelper;
         // uncomment if you want to open only one row at a time
         // binderHelper.setOpenOnlyOne(true);
     }

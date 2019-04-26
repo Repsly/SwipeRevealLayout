@@ -5,7 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+
+import com.chauthai.swipereveallayout.ViewBinderHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +18,10 @@ import java.util.List;
  * Created by Chau Thai on 4/8/16.
  */
 public class RecyclerDemoActivity extends AppCompatActivity {
+
     private RecyclerView recyclerView;
     private RecyclerAdapter adapter;
+    private ViewBinderHelper binderHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +56,8 @@ public class RecyclerDemoActivity extends AppCompatActivity {
     private void setupList() {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        adapter = new RecyclerAdapter(this, createList(20));
+        binderHelper = new ViewBinderHelper();
+        adapter = new RecyclerAdapter(this, createList(20), binderHelper);
         recyclerView.setAdapter(adapter);
     }
 
@@ -80,5 +86,18 @@ public class RecyclerDemoActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add(0, 0, 0, "Lock");
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        binderHelper.lockAllSwipe();
+        binderHelper.closeLayout();
+        return super.onOptionsItemSelected(item);
     }
 }
