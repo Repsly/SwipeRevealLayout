@@ -234,6 +234,12 @@ public class ViewBinderHelper {
         }
     }
 
+    public void closeAll() {
+        for (String id : mapLayouts.keySet()) {
+            closeLayout(id);
+        }
+    }
+
     private void setLockSwipe(boolean lock, String... id) {
         if (id == null || id.length == 0)
             return;

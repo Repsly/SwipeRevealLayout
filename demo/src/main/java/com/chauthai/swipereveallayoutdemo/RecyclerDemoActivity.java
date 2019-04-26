@@ -97,7 +97,7 @@ public class RecyclerDemoActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         binderHelper.lockAllSwipe();
-        binderHelper.closeLayout();
+        binderHelper.closeAll();
         return super.onOptionsItemSelected(item);
     }
 }
